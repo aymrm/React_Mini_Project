@@ -24,9 +24,8 @@ export default function FormNameInput({ register, errors, value }){
                 required:'이름을 입력해야 합니다',
             })}
             defaultValue={value}/>
-            { errors ? <_Error>{errors.message}</_Error>
-                : errors === undefined ? <_Normal>'이름을 입력해주세요'</_Normal>
-                    : <_Normal>'정상적으로 입력하셨습니다'</_Normal> }
+            { errors  ? <_Error>{errors.message}</_Error>
+                : <_Normal>'이름을 입력해주세요'</_Normal>}
         </div>
     )
 }

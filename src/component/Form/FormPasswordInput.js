@@ -26,8 +26,7 @@ export default function FormPasswordInput({register,errors}){
                 // validate:{ useEngNum: v => !/^[A-Za-z0-9]+$/.test(v) || '영어와 숫자로만 이루어져야 합니다'},
             })}></_Input>
             { errors ? <_Error>{errors.message}</_Error>
-                : errors===undefined ? <_Normal>'비밀번호를 입력해주세요'</_Normal>
-                    : <_Normal>'정상적으로 입력하셨습니다'</_Normal> }
+                : <_Normal>'비밀번호를 입력해주세요'</_Normal>}
         </div>
     )
 }

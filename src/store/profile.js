@@ -5,7 +5,7 @@ const initialState = {
     age: 0,
     gender: 'other',
     role: 'admin',
-    profile_image:'',
+    isLogin: false,
 }
 
 const profileSlice = createSlice({
@@ -15,6 +15,7 @@ const profileSlice = createSlice({
         testLogin(state,action){
             state.user_name = action.payload.user_name
             state.role = action.payload.role
+            state.isLogin = true
         },
         profileSetting(state,action){
             const { user_name, age, gender, profile_image } = action.payload

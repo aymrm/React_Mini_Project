@@ -26,7 +26,9 @@ const _Button = styled.button`
 `
 
 export default function Header(){
-    const { backgroundColor } = useSelector(state => state.siteSetting)
+    const { backgroundColor } = useSelector( state => state.siteSetting )
+    const { user_name, isLogin } = useSelector( state => state.profile )
+    console.log(isLogin)
     const [ isModalVisible, setModalVisible ] = useState(false);
     const [ modalPosition, setModalPosition ] = useState({ left: 0, top: 0 });
 
@@ -61,12 +63,14 @@ export default function Header(){
                 <_Span>
                     <_Link to='/'>메인 페이지</_Link>
                 </_Span>
-                <_Span>
-                    <_Span>
+                {
+                    isLogin ? <_Span>
+                        <span> {user_name} </span>
+                        <_Button onClick={handleMouseClick}>사이트 설정</_Button>
+                    </_Span> : <_Span>
                         <_Link to='/login'>로그인</_Link>
-                    </_Span>
-                    <_Button onClick={handleMouseClick}>사이트 설정</_Button>
-                </_Span>
+                    </_Span> 
+                }
                 <SiteSettingModal visible={isModalVisible} position={modalPosition} />
             </_Nav>
         </>
