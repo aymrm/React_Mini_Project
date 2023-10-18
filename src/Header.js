@@ -65,7 +65,7 @@ export default function Header(){
                 </_Span>
                 {
                     isLogin ? <_Span>
-                        <span> {user_name} </span>
+                        <_Link to='/profile'>{user_name}</_Link>
                         <_Button onClick={handleMouseClick}>사이트 설정</_Button>
                     </_Span> : <_Span>
                         <_Link to='/login'>로그인</_Link>
