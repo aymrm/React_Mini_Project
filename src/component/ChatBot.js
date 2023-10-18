@@ -142,12 +142,9 @@ export default function ChatBot(style){
     const speech = (txt) => {
         if (voices) {
             const speechTxtArr = txt.split('.')
-            console.log(txt)
-            console.log(speechTxtArr)
             speechTxtArr.map( e => {
                 if(e.includes('?')){
                     const newTextArr = e.split('?')
-                    console.log(newTextArr)
                     for (let i=0; i < newTextArr.length - 1; i++){
                         const newTxt = newTextArr[i] + '?'
                         const utterThis = new SpeechSynthesisUtterance(newTxt);

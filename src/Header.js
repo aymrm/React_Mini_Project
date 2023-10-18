@@ -28,7 +28,6 @@ const _Button = styled.button`
 export default function Header(){
     const { backgroundColor } = useSelector( state => state.siteSetting )
     const { user_name, isLogin } = useSelector( state => state.profile )
-    console.log(isLogin)
     const [ isModalVisible, setModalVisible ] = useState(false);
     const [ modalPosition, setModalPosition ] = useState({ left: 0, top: 0 });
 

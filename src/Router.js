@@ -1,11 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import App from './App'
-import RecordComponenet from "./views/Record";
 import Main from "./views/Main";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
-import Test from "./views/Test";
 import Redirect from "./component/Redirect";
 import Layout from "./views/Layout";
 

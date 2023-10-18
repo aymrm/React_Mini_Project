@@ -18,8 +18,7 @@ const profileSlice = createSlice({
             state.isLogin = true
         },
         profileSetting(state,action){
-            const { user_name, age, gender, profile_image } = action.payload
-            console.log(profile_image)
+            const { user_name, age, gender } = action.payload
             state.user_name = user_name
             state.age = age
             state.gender = gender

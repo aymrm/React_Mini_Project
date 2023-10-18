@@ -187,18 +187,20 @@ const botProfileControll = (text,navi,dispatch,speech) => {
             }
         }
     } else if(text.includes('성별을')) {
-        if(text.includes('남자로')){
-            dispatch(profileAction.genderSetting('male'))
-            speech(`성별을 남자로 변경합니다`)
-            navi('/redirect');
-        } else if (text.includes('여자로')){
-            dispatch(profileAction.genderSetting('female'))
-            speech(`성별을 여자로 변경합니다`)
-            navi('/redirect');
-        } else if (text.includes('미정으로')){
-            dispatch(profileAction.genderSetting('other'))
-            speech(`성별을 미정으로 변경합니다`)
-            navi('/redirect');
+        if(text.includes('변경')){
+            if(text.includes('남자로')){
+                dispatch(profileAction.genderSetting('male'))
+                speech(`성별을 남자로 변경합니다`)
+                navi('/redirect');
+            } else if (text.includes('여자로')){
+                dispatch(profileAction.genderSetting('female'))
+                speech(`성별을 여자로 변경합니다`)
+                navi('/redirect');
+            } else if (text.includes('미정으로')){
+                dispatch(profileAction.genderSetting('other'))
+                speech(`성별을 미정으로 변경합니다`)
+                navi('/redirect');
+            }
         }
     }
 }

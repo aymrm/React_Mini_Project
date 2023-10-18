@@ -48,7 +48,6 @@ const centerSlice = createSlice({
         },
         delLeftBox(state){
             const detail = state.lay_out.detail
-            console.log(detail)
             const minLeft = detail.reduce((min, box) => (box.detail.position.left < min ? box.detail.position.left : min), detail[0].detail.position.left);
             state.lay_out = {...state.lay_out, detail: detail.filter((box) => box.detail.position.left !== minLeft)};
         },
