@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { profileAction } from "../store/profile";
@@ -7,6 +7,7 @@ import FormNameInput from "../component/Form/FormNameInput";
 import FormAgeInput from "../component/Form/FormAgeInput";
 import FormGenderInput from "../component/Form/FormGender";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const _Container = styled.div`
     width:600px;
@@ -19,9 +20,17 @@ const _Container = styled.div`
 
 export default function Profile(){
     const { register, handleSubmit, formState: { errors } }= useForm();
-    const { user_name, age, gender, role } = useSelector( state => state.profile )
+    const { user_name, age, gender, role, isLogin } = useSelector( state => state.profile )
 
     const dispatch = useDispatch()
+    const navi = useNavigate()
+
+    useEffect(()=>{
+        if(!isLogin){
+            alert('로그인 상태가 아닙니다')
+            navi('/login')
+        }
+    },[isLogin])
 
     const onSubmit = (e) => {
         const { name, age, gender } = e

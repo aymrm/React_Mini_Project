@@ -17,6 +17,13 @@ const profileSlice = createSlice({
             state.role = action.payload.role
             state.isLogin = true
         },
+        testLogout(state){
+            state.user_name = 'default'
+            state.age = 0
+            state.gender = 'other'
+            state.role = 'admin'
+            state.isLogin = false
+        },
         profileSetting(state,action){
             const { user_name, age, gender } = action.payload
             state.user_name = user_name

@@ -55,7 +55,7 @@ const _BotText = styled.span`
 `
 
 export default function ChatBot(style){
-    const { user_name } = useSelector( state => state.profile )
+    const { user_name, isLogin } = useSelector( state => state.profile )
     const chat = useSelector( state => state.chat )
     const bot = useSelector( state => state.bot )
     const botImgArr = [ sleep, active, saying ]
@@ -129,7 +129,7 @@ export default function ChatBot(style){
                 if(transcript){
                     dispatch( chatAction.addChat({ name:user_name , text:transcript }) );
                     resetTranscript();
-                    botController(transcript,navi,dispatch,speech)
+                    botController(transcript,navi,dispatch,speech,isLogin)
                 }
             }, limit > 0 ? limit * 1000 : 1000 );
         }

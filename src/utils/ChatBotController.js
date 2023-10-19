@@ -5,9 +5,9 @@ import { v4 } from 'uuid';
 
 let check = false;
 
-export default function botControll(text,navi,dispatch,speech){     
+export default function botControll(text,navi,dispatch,speech,isLogin){     
     const currentURL = window.location.href;
-    botDefaultControll(text,navi,dispatch,speech,currentURL)
+    botDefaultControll(text,navi,dispatch,speech,currentURL,isLogin)
     switch (currentURL){
         case 'http://localhost:3000/':
             return botMainControll(text,navi,dispatch,speech)
@@ -18,7 +18,7 @@ export default function botControll(text,navi,dispatch,speech){
     }
 }
 
-const botDefaultControll = (text,navi,dispatch,speech,currentURL) => {
+const botDefaultControll = (text,navi,dispatch,speech,currentURL,isLogin) => {
     if(text.includes('이동해')){
         if(text.includes('페이지로 이동해')){
             const parts = text.split(' 페이지로 이동해');
@@ -70,6 +70,15 @@ const botDefaultControll = (text,navi,dispatch,speech,currentURL) => {
             check = true
         } else {
             speech('또 자기소개를 해야 하나요? 돈 벌기 참 힘드네요.')
+        }
+    } else if (text.includes('로그아웃')){
+        if(text.includes('시켜')){
+            if(isLogin){
+                dispatch(profileAction.testLogout())
+                speech('사이트에서 로그아웃 합니다')
+            } else {
+                speech('로그인 상태가 아닙니다')
+            }
         }
     }
 }

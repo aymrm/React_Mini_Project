@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import ModalController from "./utils/ModalController";
 import { useState } from "react";
 import SiteSettingModal from "./component/Modal/SiteSettingModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { profileAction } from "./store/profile";
 
 const _Span = styled.span`
     
@@ -31,6 +32,8 @@ export default function Header(){
     const [ isModalVisible, setModalVisible ] = useState(false);
     const [ modalPosition, setModalPosition ] = useState({ left: 0, top: 0 });
 
+    const dispatch = useDispatch()
+
     const handleMouseClick = (e) => {
         const { clientX, clientY } = e;
         if(clientX < window.innerWidth/2){
@@ -41,7 +44,7 @@ export default function Header(){
         setModalVisible( prev => !prev )
     }
 
-    function makeColorDarker(color, amount) {
+    const makeColorDarker = (color, amount) => {
         const r = parseInt(color.slice(1, 3), 16);
         const g = parseInt(color.slice(3, 5), 16);
         const b = parseInt(color.slice(5, 7), 16);
@@ -54,7 +57,11 @@ export default function Header(){
       
         return darkerColor;
     }
-      
+
+    const headerLogout = () => {
+        alert('사이트에서 로그아웃 합니다')
+        dispatch(profileAction.testLogout())
+    }      
 
     return (
         <>
@@ -65,6 +72,7 @@ export default function Header(){
                 {
                     isLogin ? <_Span>
                         <_Link to='/profile'>{user_name}</_Link>
+                        <_Button onClick={headerLogout}>로그아웃</_Button>
                         <_Button onClick={handleMouseClick}>사이트 설정</_Button>
                     </_Span> : <_Span>
                         <_Link to='/login'>로그인</_Link>
