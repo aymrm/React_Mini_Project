@@ -225,7 +225,7 @@ const handleGenerateResponse = async (txt,speech) => {
         const requestBody = {
             model:'gpt-3.5-turbo',
             messages: [{role:'user',content:`${txt}에 대해 간단하게 설명해줘`}],
-            max_tokens: 100,
+            max_tokens: 300,
         };
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
