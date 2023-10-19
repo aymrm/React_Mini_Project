@@ -9,11 +9,11 @@ export default function botControll(text,navi,dispatch,speech,isLogin){
     const currentURL = window.location.href;
     botDefaultControll(text,navi,dispatch,speech,currentURL,isLogin)
     switch (currentURL){
-        case 'http://localhost:3000/':
+        case 'http://localhost:3000/' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/':
             return botMainControll(text,navi,dispatch,speech)
-        case 'http://localhost:3000/login':
+        case 'http://localhost:3000/login' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/login':
             return botLoginControll(text,navi,dispatch,speech)
-        case 'http://localhost:3000/profile':
+        case 'http://localhost:3000/profile' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/profile':
             return botProfileControll(text,navi,dispatch,speech)
     }
 }
@@ -45,11 +45,11 @@ const botDefaultControll = (text,navi,dispatch,speech,currentURL,isLogin) => {
         if (text.includes('에 대해 알려')) {
             if(text.includes('현재 위치')){
                 switch (currentURL){
-                    case 'http://localhost:3000/':
+                    case 'http://localhost:3000/' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/':
                         return speech('현재 메인 페이지 입니다.')
-                    case 'http://localhost:3000/login':
+                    case 'http://localhost:3000/login' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/login':
                         return speech('현재 로그인 페이지 입니다.')
-                    case 'http://localhost:3000/profile':
+                    case 'http://localhost:3000/profile' || 'https://web-react-mini-project-jvpb2alnvkso15.sel5.cloudtype.app/profile':
                         return speech('현재 프로필 페이지 입니다.')
                 }
             } else {
